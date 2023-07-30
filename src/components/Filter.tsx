@@ -20,7 +20,7 @@ const Filter = ({search, setSearch, region, setRegion} : Props) => {
             ><AiOutlineSearch size={20} /></span>
             <input type="text" name="country" value={search}
                 onChange={(e) => setSearch(e.target.value)}
-            id="country" className="px-4 py-4 pl-12 w-full  shadow-md shadow-lt-dark-gray dark:shadow-dk-very-dark-blue rounded-md dark:bg-dk-dark-blue" placeholder="Search for a country..." />
+            id="country" className="px-4 py-4 pl-12 w-full  shadow-md shadow-lt-dark-gray dark:shadow-dk-very-dark-blue rounded-md dark:bg-dk-dark-blue dark:text-lt-light-gray" placeholder="Search for a country..." />
         </div>
 
         <div>
