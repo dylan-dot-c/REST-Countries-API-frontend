@@ -11,7 +11,7 @@
     }
   
     h1 {
-        @apply text-base font-bold font-nunito;
+        @apply text-base font-bold font-nunito lg:text-2xl;
     }
 
     h2, h3 {
@@ -19,11 +19,11 @@
     }
 
     body {
-        @apply p-5 bg-lt-light-gray dark:bg-dk-very-dark-blue;
+        @apply p-5 lg:lg:px-16 bg-lt-light-gray dark:bg-dk-very-dark-blue;
     }
 
     p {
-        @apply text-sm mb-1 dark:text-lt-light-gray;
+        @apply text-sm mb-1 dark:text-lt-light-gray lg:text-base;
     }
 
     .details p {
