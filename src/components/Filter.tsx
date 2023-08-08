@@ -1,6 +1,8 @@
 // import React from 'react'
 
 import { AiOutlineSearch } from "react-icons/ai";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { useState } from "react";
 
 const regions = [
   "Filter by Region",
@@ -19,6 +21,20 @@ interface Props {
 }
 
 const Filter = ({ search, setSearch, region, setRegion }: Props) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  function toggleModal() {
+    setShowModal(!showModal);
+  }
+
+  const updateRegion = (region: string) => {
+    if (region == regions[0]) {
+      setRegion("");
+    } else {
+      setRegion(region);
+    }
+  };
+
   return (
     <form className="mt-20 lg:mt-28 mb-8 lg:flex lg:justify-between">
       <div className="relative mb-6 lg:w-2/5">
@@ -36,22 +52,33 @@ const Filter = ({ search, setSearch, region, setRegion }: Props) => {
         />
       </div>
 
-      <div>
-        <select
-          name="region"
-          value={region}
-          onChange={(e) => setRegion(e.target.value)}
-          id="region"
-          className="px-5 py-3 shadow-lg shadow-lt-dark-gray rounded-md dark:bg-dk-dark-blue dark:shadow-dk-very-dark-blue dark:text-mt-white"
+      <div className="w-[200px]" onClick={toggleModal}>
+        <div className="px-5 py-3 shadow-lg shadow-lt-dark-gray rounded-md dark:bg-dk-dark-blue dark:shadow-dk-very-dark-blue dark:text-mt-white flex items-center gap-5 justify-between">
+          <span>{region == "" ? "Filter By Region" : region}</span>
+          <span className={`${showModal && "rotate-180"}`}>
+            <MdKeyboardArrowDown size={25} />
+          </span>
+        </div>
+
+        <div
+          className={`absolute z-10 dark:bg-dk-dark-blue bg-lt-light-gray translate-y-1 w-[200px] px-5 py-3 rounded-lg shadow-md dark:shadow-dk-very-dark-blue shadow-lt-dark-gray ${
+            showModal ? "block" : "hidden"
+          }`}
         >
-          {regions.map((region, index) => {
-            return (
-              <option value={index === 0 ? "" : region} key={index}>
-                {region}
-              </option>
-            );
-          })}
-        </select>
+          <ul className="space-y-2">
+            {regions.map((region, index) => {
+              return (
+                <li
+                  key={index}
+                  className="dark:text-lt-light-gray hover:cursor-pointer text-lt-very-dark-blue font-semibold"
+                  onClick={() => updateRegion(region)}
+                >
+                  {region}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </form>
   );
