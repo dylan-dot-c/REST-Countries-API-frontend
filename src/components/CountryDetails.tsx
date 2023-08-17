@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Country from "../models";
 import axios from "axios";
@@ -122,15 +122,16 @@ const CountryDetails: React.FC = () => {
                   const countryName = Codes[border];
 
                   return (
-                    <span
-                      key={index}
-                      className=" py-1 px-4 text-center shadow-sm text-sm shadow-lt-dark-gray
+                    <Link to={`/country/${countryName}`} key={index}>
+                      <span
+                        className=" py-1 px-4 text-center shadow-sm text-sm shadow-lt-dark-gray
                                 dark:shadow-dk-very-dark-blue
                                 dark:text-mt-white dark:bg-dk-dark-blue bg-white hover:cursor-pointer"
-                      onClick={() => setCountryName(countryName)}
-                    >
-                      {countryName}
-                    </span>
+                        onClick={() => setCountryName(countryName)}
+                      >
+                        {countryName}
+                      </span>
+                    </Link>
                   );
                 })
               )}

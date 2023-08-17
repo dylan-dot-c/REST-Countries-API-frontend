@@ -39,7 +39,7 @@ export function CountriesGrid({ loading, countries, region, search }: Props) {
             }
           })
           .map((country, index) => {
-            return <CountryCard index={index} country={country} />;
+            return <CountryCard index={index} key={index} country={country} />;
           })
       )}
     </div>
