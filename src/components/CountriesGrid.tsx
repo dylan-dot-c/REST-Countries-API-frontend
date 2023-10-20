@@ -13,9 +13,8 @@ interface Props {
 export function CountriesGrid({ loading, countries, region, search }: Props) {
   return (
     <div
-      className="lg:grid lg:grid-cols-4 lg:gap-16 grid-cols-1 grid gap-6"
-      key={Date.now()}
-    >
+      className='lg:grid lg:grid-cols-4 lg:gap-16 grid-cols-1 grid gap-6'
+      key={Date.now()}>
       {loading ? (
         <Preloader /> // Ensure that region and search have default values in case they are undefined or null
       ) : (
